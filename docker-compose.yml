@@ -1,0 +1,24 @@
+version: '3'
+services:
+  hypernode:
+    build: hypernode
+    container_name: project_web
+    env_file:
+      - hypernode-variables.env
+    ports:
+      - 80:80
+      - 22:2222
+    links:
+      - elastic
+
+  elastic:
+    build: elastic
+    environment:
+      - ES_JAVA_OPTS=-Xmx2g -Xms2g
+    ports:
+      - 9200:9200
+      - 9300:9300
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536

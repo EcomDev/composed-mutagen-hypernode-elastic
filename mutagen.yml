@@ -1,0 +1,9 @@
+sync:
+  magento2:
+    alpha: "project-magento2"
+    beta: "docker://app@project_web/data/web/magento2"
+    mode: "two-way-safe"
+    ignore:
+      vcs: true
+      paths:
+        - pub/static/*/**
